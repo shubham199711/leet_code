@@ -15,9 +15,9 @@ class TreeNode:
 
 class Solution:
     def is_equal(self, left: Optional[TreeNode], right: Optional[TreeNode]) -> bool:
-        if not left and not right:
+        if left is None and right is None:
             return True
-        if left and right:
+        if left is not None and right is not None:
             if left.val != right.val:
                 return False
             if not self.is_equal(left.left, right.right) or not self.is_equal(left.right, right.left):
