@@ -1,4 +1,3 @@
-from types import resolve_bases
 from typing import *
 #
 # @lc app=leetcode id=168 lang=python3
