@@ -8,19 +8,19 @@ def findNode(data):
         if i < 0 or j < 0 or i >= r or j >= c or data[i][j] == 0 or visited[i][j] == True:
             return False
         return True
-    query = [[0, 0]]
+    queue = [[0, 0]]
     ans = 0
-    while len(query) > 0:
-        i, j = query.pop(0)
+    while len(queue) > 0:
+        i, j = queue.pop(0)
         if isValid(i,j):
             visited[i][j] = True
             if data[i][j] == 2:
                 print('Path length found to be: ', ans)
                 return
-            query.append([i + 1,j])
-            query.append([i - 1,j])
-            query.append([i, j + 1])
-            query.append([i, j - 1])
+            queue.append([i + 1,j])
+            queue.append([i - 1,j])
+            queue.append([i, j + 1])
+            queue.append([i, j - 1])
             ans += 1
     print('Path not found')
     return
