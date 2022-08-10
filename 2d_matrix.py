@@ -6,7 +6,7 @@ def findNode(data):
         if i < 0 or j < 0 or i >= r or j >= c or data[i][j] == 0 or visited[i][j] == True:
             return False
         return True
-    queue = [[0, 0, 0]]
+    queue = [[0, 0, 0]] # x, y, ans
     while len(queue) > 0:
         i, j, ans = queue.pop(0)
         if isValid(i,j):
@@ -21,5 +21,5 @@ def findNode(data):
     print('Path not found')
     return -1, -1, -1
 
-data = [[1,1,0],[0,1,1],[2,1,1]]
+data = [[1,1,0],[0,1,1],[1,2,1]]
 findNode(data)
