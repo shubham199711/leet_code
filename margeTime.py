@@ -7,4 +7,3 @@ class Solution:
             else:
                 _ans += [i]
         return _ans
-        
