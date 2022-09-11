@@ -4,6 +4,6 @@ class Solution:
     def spiralOrder(self, matrix):
         _ans = []
         while matrix:
-            _ans.extend([*matrix.pop(0)])
+            _ans.extend(matrix.pop(0))
             matrix = [*zip(*matrix)][::-1]
         return _ans
