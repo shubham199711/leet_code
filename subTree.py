@@ -6,8 +6,10 @@
 #         self.right = right
 class Solution:
     def isMatch(self, s, t):
-        if not(s and t):
-            return s is t
+        if s is None and t is None:
+            return True
+        if s is None or t is None:
+            return None
         return (s.val == t.val and self.isMatch(s.left, t.left) and self.isMatch(s.right, t.right))
 
     def isSubtree(self, s, t):
