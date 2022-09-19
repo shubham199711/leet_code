@@ -24,7 +24,7 @@ class Solution:
                 current = current.left
             else:
                 current = stack.pop()
-                _ans.append(current.vl)
+                _ans.append(current.val)
                 current = current.right
         return _ans
 # @lc code=end

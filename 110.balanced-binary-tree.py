@@ -24,9 +24,8 @@ class Solution:
             return True
         left_height = self.height(root.left)
         right_height = self.height(root.right)
-        if abs(left_height - right_height) <= 1:
-            if self.isBalanced(root.left) is True and self.isBalanced(root.right) is True:
-                return True
-        return False
+        if abs(left_height - right_height) > 1:
+            return False
+        return self.isBalanced(root.left) and self.isBalanced(root.right)
 # @lc code=end
 

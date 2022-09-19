@@ -17,8 +17,7 @@ class Solution:
     def depth(self,root: Optional[TreeNode],depth: int) -> int:
         if not root:
             return depth - 1
-        return max( depth ,self.depth(root.left, depth + 1),
-        self.depth(root.right, depth + 1))
+        return max(depth ,self.depth(root.left, depth + 1), self.depth(root.right, depth + 1))
         
     def maxDepth(self, root: Optional[TreeNode]) -> int:
         return self.depth(root, 1)

@@ -11,6 +11,6 @@ class Solution:
         ans = 0
         for i in range(n):
             waterLevel = min(maxLeft[i], maxRight[i])
-            if waterLevel >= height[i]:
+            if waterLevel >= height[i]: # this height was above the water level or not
                 ans += waterLevel - height[i]
         return ans

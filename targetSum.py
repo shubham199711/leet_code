@@ -8,8 +8,8 @@ class Solution:
         if memo.get(i) is not None:
             return memo[i]
         positive = self.helper(nums, index + 1,_sum + nums[index], target, memo)
-        negetive = self.helper(nums, index + 1,_sum - nums[index], target, memo)
-        _localSum = positive + negetive
+        negative = self.helper(nums, index + 1,_sum - nums[index], target, memo)
+        _localSum = positive + negative
         memo[i] = _localSum
         return _localSum
     
