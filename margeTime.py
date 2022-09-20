@@ -5,5 +5,5 @@ class Solution:
             if _ans and i[0] <= _ans[-1][-1]:
                 _ans[-1][-1] = max(_ans[-1][-1], i[1])
             else:
-                _ans += [i]
+                _ans.append(i)
         return _ans

@@ -4,9 +4,10 @@ def coinChange(self, coins: List[int], amount: int) -> int:
     visited = set()
     for currentAmount, step in queue:
         for coin in coins:
-            if currentAmount + coin in visited: continue
-            if currentAmount + coin == amount: return step + 1
-            elif currentAmount + coin < amount:
-                queue.append([currentAmount + coin, step + 1 ])
-                visited.add(currentAmount + coin)
+            newCurrentAmount = currentAmount + coin
+            if newCurrentAmount in visited: continue
+            if newCurrentAmount == amount: return step + 1
+            elif newCurrentAmount < amount:
+                queue.append([newCurrentAmount, step + 1])
+                visited.add(newCurrentAmount)
     return -1
