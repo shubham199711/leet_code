@@ -17,10 +17,10 @@ class Solution:
             if char in openPar:
                 stack.append(char)
             elif char in closePar:
-                if len(stack) > 0 and indexOpen.get(stack[-1]) == indexClose.get(char):
+                if stack and indexOpen.get(stack[-1]) == indexClose.get(char):
                     stack.pop()
                 else:
                     return False
-        return False if len(stack) > 0 else True
+        return False if stack else True
                 
         
