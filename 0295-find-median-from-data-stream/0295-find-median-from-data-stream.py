@@ -1,15 +1,14 @@
+import bisect
 class MedianFinder:
-
     def __init__(self):
         self.median = None
         self.numbers = []
         
 
     def addNum(self, num: int) -> None:
-        self.numbers.append(num)
+        bisect.insort_left(self.numbers, num)
         
     def findMedian(self) -> float:
-        self.numbers.sort()
         mid = len(self.numbers) // 2
         if len(self.numbers) % 2 == 1:
             return self.numbers[mid]
