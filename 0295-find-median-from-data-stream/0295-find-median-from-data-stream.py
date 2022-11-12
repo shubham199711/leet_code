@@ -1,7 +1,6 @@
 import bisect
 class MedianFinder:
     def __init__(self):
-        self.median = None
         self.numbers = []
         
 
@@ -10,10 +9,10 @@ class MedianFinder:
         
     def findMedian(self) -> float:
         mid = len(self.numbers) // 2
-        if len(self.numbers) % 2 == 1:
-            return self.numbers[mid]
-        else:
+        if len(self.numbers) % 2 == 0:
             return (self.numbers[mid] + self.numbers[mid - 1]) / 2
+        else:
+            return self.numbers[mid]
             
         
 
