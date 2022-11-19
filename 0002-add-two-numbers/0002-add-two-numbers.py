@@ -4,7 +4,7 @@
 #         self.val = val
 #         self.next = next
 class Solution:
-    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+    def addTwoNumbers2(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         ans1, ans2 = [], []
         t1, t2 = l1, l2
         while t1 or t2:
@@ -26,6 +26,29 @@ class Solution:
                 temp = temp.next
         return head
             
-        
-        
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        t1, t2, t3, head, curry = l1, l2, None, None, 0
+        while t1 or t2:
+            ans1, ans2 = 0, 0
+            if t1:
+                ans1 = t1.val
+                t1 = t1.next
+            if t2:
+                ans2 = t2.val
+                t2 = t2.next
+            ans = ans1 + ans2 + curry
+            if ans > 9:
+                curry = 1
+                ans = int(str(ans)[-1])
+            else:
+                curry = 0
+            if not head:
+                head = temp = ListNode(ans)
+            else:
+                temp.next = ListNode(ans)
+                temp = temp.next
+        if curry:
+            temp.next = ListNode(1)
+            temp = temp.next
+        return head
         
