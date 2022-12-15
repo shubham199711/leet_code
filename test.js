@@ -1,0 +1,1 @@
+// select * from users where id in(select user_id from orders group by user_id having count(*) > 10);
