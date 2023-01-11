@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 class Solution:
-    def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
+    def deepestLeavesSum_OLD(self, root: Optional[TreeNode]) -> int:
         if root is None:
             return 0
         maxLevel = 0
@@ -23,4 +23,24 @@ class Solution:
                 setMaxLevelOfTree(root.right, runningLevel + 1)
         setMaxLevelOfTree(root, 0)
         return sum(levelValueObj[maxLevel])
+    
+    # use less memory
+    def deepestLeavesSum(self, root: Optional[TreeNode]) -> int:
+        if root is None:
+            return 0
+        maxLevel = 0
+        ans = 0
+        def dfs(root = root, runningLevel = 0) -> None:
+            nonlocal maxLevel
+            nonlocal ans
+            if root is not None:
+                dfs(root.left, runningLevel + 1)
+                dfs(root.right, runningLevel + 1)
+                if maxLevel < runningLevel:
+                    ans = 0
+                    maxLevel = runningLevel
+                if maxLevel == runningLevel:
+                    ans += root.val
+        dfs()
+        return ans
 
