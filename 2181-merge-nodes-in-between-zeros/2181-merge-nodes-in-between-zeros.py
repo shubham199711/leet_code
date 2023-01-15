@@ -12,11 +12,10 @@ class Solution:
             if running.val == 0 and _sum != 0:
                 if newHead is None:
                     newHead = runningNew = ListNode(_sum)
-                    _sum = 0
                 else:
                     runningNew.next = ListNode(_sum)
                     runningNew = runningNew.next
-                    _sum = 0
+                _sum = 0
             else:
                 _sum += running.val
             running = running.next
