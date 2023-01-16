@@ -1,5 +1,5 @@
 class Solution:
-    def myAtoi(self, s: str) -> int:
+    def myAtoi_old(self, s: str) -> int:
         ans = ''
         allowed = ['-', '+', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
         for index,item in enumerate(s.strip()):
@@ -18,5 +18,27 @@ class Solution:
         elif ans < 0 and ans < intLimitMin:
             return intLimitMin
         return ans
-            
-        
+    
+    def myAtoi(self, s: str) -> int:
+        ans = ''
+        sign = '+'
+        allowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        for index,item in enumerate(s.strip()):
+            if index == 0 and (item == '+' or item == '-'):
+                sign = item
+                continue
+            if item in allowed:
+                ans += item
+            else:
+                break
+        if not ans:
+            return 0
+        ans = int(sign + ans)
+        intLimitMax = ((2 ** 31) -1)
+        intLimitMin = -2 ** 31
+        if ans > 0 and ans > intLimitMax:
+            return intLimitMax
+        elif ans < 0 and ans < intLimitMin:
+            return intLimitMin
+        return ans
+
