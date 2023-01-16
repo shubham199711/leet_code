@@ -22,7 +22,7 @@ class Solution:
     def myAtoi(self, s: str) -> int:
         ans = ''
         sign = '+'
-        allowed = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        allowed = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'}
         for index,item in enumerate(s.strip()):
             if index == 0 and (item == '+' or item == '-'):
                 sign = item
