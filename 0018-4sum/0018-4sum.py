@@ -9,6 +9,7 @@ class Solution:
                 for i in range(start, len(nums) - k + 1):
                     if i > start and nums[i] == nums[i -1]:
                         continue
+                    # quad is buffer where we keep 2 element and then we find remaning with 2-sum solution
                     quad.append(nums[i])
                     kSum(k -1, i + 1, currentTarget - nums[i])
                     quad.pop()
