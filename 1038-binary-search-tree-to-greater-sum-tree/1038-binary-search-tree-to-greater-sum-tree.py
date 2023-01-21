@@ -8,7 +8,7 @@
 import bisect
 class Solution:
     # with sorted array
-    def bstToGst(self, root: TreeNode) -> TreeNode:
+    def bstToGst_old(self, root: TreeNode) -> TreeNode:
         sortedAns = []
         sumAns = []
         def btsInPleace(head):
@@ -35,7 +35,16 @@ class Solution:
         sumArray()
         btsInPleaceAndUpdate(root)
         return root
-                
-            
-            
+    # with dfs only
+    def bstToGst(self, root: TreeNode) -> TreeNode:
+        runningSum = 0
+        def dfs(head):
+            nonlocal runningSum
+            if not head: return
+            dfs(head.right)
+            runningSum += head.val
+            head.val = runningSum
+            dfs(head.left)
+        dfs(root)
+        return root
         
