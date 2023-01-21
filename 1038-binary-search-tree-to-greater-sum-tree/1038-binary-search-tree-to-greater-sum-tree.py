@@ -33,8 +33,6 @@ class Solution:
         
         btsInPleace(root)
         sumArray()
-        print(sortedAns)
-        print(sumAns)
         btsInPleaceAndUpdate(root)
         return root
                 
