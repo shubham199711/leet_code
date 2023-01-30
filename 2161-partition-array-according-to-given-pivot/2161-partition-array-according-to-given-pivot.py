@@ -1,5 +1,6 @@
 class Solution:
     def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
+        return sorted(nums, key=lambda x: x-pivot and (1, -1)[x<pivot])
         lessThenPivot = []
         moreThenPivot = []
         equalThenPivot = []
