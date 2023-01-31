@@ -1,11 +1,10 @@
 class Solution:
     def findArray(self, pref: List[int]) -> List[int]:
         ans = []
-        for i,item in enumerate(pref):
-            if i == 0:
-                ans.append(item)
-                continue
-            ans.append(pref[i -1] ^ item)
+        last = 0
+        for item in pref:
+            ans.append(last ^ item)
+            last = item
         return ans
                 
         
