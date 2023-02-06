@@ -9,19 +9,25 @@ class Solution:
         _ans = 0
         runningSum = 0
         runningCount = 0
-        def sumAndCount(_head, count = 0, _sum = 0):
-            nonlocal runningSum, runningCount
+        cache = {}
+        def sumAndCount(_head):
+            nonlocal runningSum, runningCount, cache
             if _head is None:
                 return 0, 1
+            if cache.get(id(_head)) is not None:
+                runningSum += cache[id(_head)][0]
+                runningCount += cache[id(_head)][1]
+                return runningSum, runningCount
             runningSum += _head.val
             runningCount += 1
             sumAndCount(_head.left)
             sumAndCount(_head.right)
+            cache[id(_head)] = runningSum, runningCount
             return runningSum, runningCount
             
         
         def dfs(head):
-            nonlocal _ans, runningSum, runningCount
+            nonlocal _ans, runningSum, runningCount, cache
             if head is None:
                 return 
             dfs(head.left)
@@ -30,7 +36,7 @@ class Solution:
             currentVal,currentCount = sumAndCount(head)
             if (currentVal // currentCount) == head.val:
                 _ans += 1
-            # print(f'{head.val = }, {currentVal = }, {currentCount = }, {_ans = }')
+            # print(f'{head.val = }, {currentVal = }, {currentCount = }, {_ans = }, {cache = }')
                 
         dfs(root)
         return _ans
