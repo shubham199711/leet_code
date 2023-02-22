@@ -13,9 +13,9 @@ class Solution:
         while front and front.next:
             front = front.next
             tail = tail.next
-        if front:
+        if front: # remove element as expected
             tail.next = tail.next.next
-        else:
+        else: # remove head as count was equal to the ll length
             head = head.next
         return head
         
