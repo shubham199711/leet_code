@@ -4,8 +4,8 @@ class Solution:
         #     if target < item:
         #         return item
         # return letters[0]
-        if target == 'z':
-            return letters[0]
+        # if target == 'z':
+        #     return letters[0]
         left , right = 0, len(letters)
         while left < right:
             mid = (left + right) // 2
