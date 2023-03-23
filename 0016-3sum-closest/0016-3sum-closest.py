@@ -3,7 +3,7 @@ class Solution:
         output =  math.inf
         nums = sorted(nums)
         
-        for i in range(len(nums[:-2])):
+        for i in range(len(nums) -2):
             
             if nums[i] == nums[i-1] and i>0:
                 continue
