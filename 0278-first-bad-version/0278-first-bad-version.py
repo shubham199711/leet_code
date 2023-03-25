@@ -6,8 +6,7 @@ class Solution:
         l, r = 0, n
         while l < r:
             mid = (l + r) // 2
-            ans = isBadVersion(mid)
-            if ans == True:
+            if isBadVersion(mid) == True:
                 r = mid
             else:
                 l = mid + 1
