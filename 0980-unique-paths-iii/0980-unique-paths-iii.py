@@ -1,22 +1,22 @@
 class Solution:
-    def walk(self, grid , s, e, visited):
-        if s in visited:
-            return
-        if len(visited) > self.count:
+    def walk(self, grid , s, e, depth):
+        if depth > self.count:
             return
         if not (0 <= s[0] < len(grid) and 0 <= s[1] < len(grid[0])):
             return
         if grid[s[0]][s[1]] == -1:
             return
         if grid[s[0]][s[1]] == 2:
-            if len(visited) == self.count - 1:
+            if depth == self.count:
                 self.ans += 1
                 return
-        visited.add(s)
-        self.walk(grid, (s[0] + 1, s[1]), e, visited.copy())
-        self.walk(grid, (s[0] - 1, s[1]), e, visited.copy())
-        self.walk(grid, (s[0], s[1] + 1), e, visited.copy())
-        self.walk(grid, (s[0], s[1] - 1), e, visited.copy())
+        backUp = grid[s[0]][s[1]]
+        grid[s[0]][s[1]] = -1 
+        self.walk(grid, (s[0] + 1, s[1]), e, depth + 1)
+        self.walk(grid, (s[0] - 1, s[1]), e, depth + 1)
+        self.walk(grid, (s[0], s[1] + 1), e, depth + 1)
+        self.walk(grid, (s[0], s[1] - 1), e, depth + 1)
+        grid[s[0]][s[1]] = backUp
         
         
     
@@ -35,5 +35,5 @@ class Solution:
                 if grid[i][j] == 0:
                     self.count += 1
                     
-        self.walk(grid, s, e, set([]))
+        self.walk(grid, s, e, 1)
         return self.ans
