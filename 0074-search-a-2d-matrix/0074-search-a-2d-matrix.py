@@ -12,5 +12,7 @@ class Solution:
                     else:
                         r = mid - 1
                 return False
+            if item[0] > target:
+                return False
         return False
         
