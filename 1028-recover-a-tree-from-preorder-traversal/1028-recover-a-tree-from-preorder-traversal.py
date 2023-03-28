@@ -20,7 +20,6 @@ class Solution:
             return (count, num)
         
         count, num = getCountAndNextNumber()
-        # print(count, num)
         root = TreeNode(num)
         i += count + len(num)
         
@@ -28,9 +27,7 @@ class Solution:
             nonlocal i
             if i == len(traversal) - 1:
                 return None
-            # print(f'{i = }, {level}')
             count, num = getCountAndNextNumber()
-            # print(f'{count = }, {num = }, {i = }, {level}')
             if level == count:
                 if head.left is None:
                     head.left = TreeNode(num)
