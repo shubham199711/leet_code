@@ -21,19 +21,17 @@ class Solution:
             return _mat
         
         visited = set()
-        # queue = collections.deque([[mat, 0]])
         queue = [[mat, 0]]
-        while queue:
-            for _ in range(len(queue)):
-                cmat, cnt = queue.pop(0)
-                if checkAllZero(cmat): return cnt
-                for i in range(len(mat)):
-                    for j in range(len(mat[0])):
-                        nmat = flip(cmat, i, j)
-                        cur = tuple(map(tuple, nmat))
-                        if cur in visited: continue
-                        queue.append([nmat, cnt+1])
-                        visited.add(cur)
+        while len(queue):
+            cmat, cnt = queue.pop(0)
+            if checkAllZero(cmat): return cnt
+            for i in range(len(mat)):
+                for j in range(len(mat[0])):
+                    nmat = flip(cmat, i, j)
+                    cur = tuple(map(tuple, nmat))
+                    if cur in visited: continue
+                    queue.append([nmat, cnt+1])
+                    visited.add(cur)
         return -1
         return -1
        
