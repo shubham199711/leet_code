@@ -21,10 +21,11 @@ class Solution:
             return _mat
         
         visited = set()
-        queue = collections.deque([[mat, 0]])
+        # queue = collections.deque([[mat, 0]])
+        queue = [[mat, 0]]
         while queue:
             for _ in range(len(queue)):
-                cmat, cnt = queue.popleft()
+                cmat, cnt = queue.pop(0)
                 if checkAllZero(cmat): return cnt
                 for i in range(len(mat)):
                     for j in range(len(mat[0])):
