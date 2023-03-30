@@ -9,7 +9,6 @@ class SORTracker:
         bisect.insort(self.locations, (-1 * score, name))
 
     def get(self) -> str:
-        output = self.locations[self.rank]
         self.rank += 1
-        return output[1]
+        return self.locations[self.rank - 1][1]
     
