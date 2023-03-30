@@ -8,7 +8,7 @@ class FreqStack(object):
     def push(self, val):
         self.d[val] += 1
         self.index += 1
-        heapq.heappush(self.array, (-self.d[val], -self.index, val))
+        heapq.heappush(self.array, (-self.d[val], -self.index, val)) # sort on freq then on index(new element should come first)
     
     def pop(self):
         count, index, val = heapq.heappop(self.array)
