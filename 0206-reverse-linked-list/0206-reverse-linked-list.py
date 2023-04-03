@@ -12,3 +12,4 @@ class Solution:
             prev = head
             head = temp
         return prev
+            
