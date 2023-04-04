@@ -1,55 +1,29 @@
 class Solution:
     def totalNQueens(self, n: int) -> int:
+        board = [["."]*n for x in range(n)]
         ans = 0
-        
-        def add_to_visited(visited, i, j):
-            _visited = copy.deepcopy(visited)
+        def validPlacement(r, c):
+            for i in range(n):
+                if i == r: continue
+                if board[i][c] == 'Q':
+                    return False
+            for i, j in [(1, 1),(1, -1),(-1, -1),(-1, 1)]:
+                _r,  _c = r + i, c + j
+                while 0 <= _r < n and 0 <= _c < n:
+                    if board[_r][_c] == 'Q':
+                        return False
+                    _r,  _c = _r + i, _c + j
+            return True
             
-            for jj in range(n):
-                _visited.add((i, jj))
-                
-            for jj in range(n):
-                _visited.add((jj, j))
-                
-            # up 
-            ii, jj = i , j
-            while ii >= 0 and jj > 0:
-                _visited.add((ii, jj))
-                ii -= 1
-                jj -= 1
-                
-            ii, jj = i , j
-            while ii >= 0 and jj >= 0:
-                _visited.add((ii, jj))
-                ii -= 1
-                jj += 1
-                
-            # down 
-            ii, jj = i , j
-            while ii < n and jj >= 0:
-                _visited.add((ii, jj))
-                ii += 1
-                jj -= 1
-                
-            ii, jj = i , j
-            while ii < n and jj < n:
-                _visited.add((ii, jj))
-                ii += 1
-                jj += 1
-            return _visited
-        
-        def dfs(i, visited):
+        def backtrack(row):
             nonlocal ans
-            if i == n:
+            if row == n:
                 ans += 1
                 return
-            for jj in range(n):
-                if (i, jj) not in visited:
-                    _visited = add_to_visited(visited, i, jj)
-                    dfs(i + 1, _visited)
-        
-        dfs(0, set([]))
+            for i in range(n):
+                board[row][i] = 'Q'
+                if validPlacement(row, i):
+                    backtrack(row + 1)
+                board[row][i] = '.'
+        backtrack(0)
         return ans
-            
-            
-        
