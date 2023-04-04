@@ -8,14 +8,11 @@ class Solution:
                 if board[i][c] == 'Q':
                     return False
             for i, j in [(1, 1),(1, -1),(-1, -1),(-1, 1)]:
-                _r,  _c = r, c
-                _r = _r + i
-                _c = _c + j
+                _r,  _c = r + i, c + j
                 while 0 <= _r < n and 0 <= _c < n:
                     if board[_r][_c] == 'Q':
                         return False
-                    _r = _r + i
-                    _c = _c + j
+                    _r,  _c = _r + i, _c + j
             return True
             
         def backtrack(row):
