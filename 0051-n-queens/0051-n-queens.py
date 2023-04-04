@@ -2,7 +2,7 @@ class Solution:
     def solveNQueens(self, n: int) -> List[List[str]]:
         board = [["."]*n for x in range(n)]
         ans = []
-        def validPlacement(r, c, board):
+        def validPlacement(r, c):
             for i in range(n):
                 if i == r: continue
                 if board[i][c] == 'Q':
@@ -18,15 +18,15 @@ class Solution:
                     _c = _c + j
             return True
             
-        def backtrack(row, board):
+        def backtrack(row):
             if row == n:
                 ans.append(list(map(lambda x: ''.join(x), board)))
                 return
             for i in range(n):
                 board[row][i] = 'Q'
-                if validPlacement(row, i, board):
-                    backtrack(row + 1, board)
+                if validPlacement(row, i):
+                    backtrack(row + 1)
                 board[row][i] = '.'
-        backtrack(0, board)
+        backtrack(0)
         return ans
         
