@@ -1,7 +1,7 @@
 class MyHashMap:
 
     def __init__(self):
-        self.n = 1000
+        self.n = 10000
         self.table = []
         for i in range(self.n):
             self.table.append([])
