@@ -11,11 +11,14 @@ class MyHashMap:
             if v[0]==key:
                 return hk,i
         return hk,-1
+    
     def put(self, key: int, value: int) -> None:
         hk,idx = self.find(key)
         if idx!=-1:
+            # replace value
             self.table[hk][idx] = (key,value)
         else:
+            # add new value
             self.table[hk].append((key,value))
 
     def get(self, key: int) -> int:
