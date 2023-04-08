@@ -1,11 +1,11 @@
 class Solution:
     def search(self, nums: List[int], target: int) -> int:
-        l, r = 0, len(nums) - 1
+        l , r = 0, len(nums) - 1
         while l <= r:
             mid = (l + r) // 2
             if nums[mid] == target:
                 return mid
-            elif nums[mid] >= nums[l]:
+            elif nums[l] <= nums[mid]:
                 if target < nums[l] or nums[mid] < target:
                     l = mid + 1
                 else:
