@@ -1,31 +1,32 @@
 class Solution:
-    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        def bs(item):
-            l, r = 0, len(item) - 1
-            while l <= r:
-                mid = (l + r) // 2
-                if item[mid] == target:
+    def searchMatrix(self, m: List[List[int]], target: int) -> bool:
+        def bs_array():
+            left, right = 0, len(m) - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if m[mid][0] <= target <= m[mid][-1]:
                     return mid
-                if item[mid] < target:
-                    l = mid + 1
+                elif m[mid][-1] < target:
+                    left = mid + 1
                 else:
-                    r = mid - 1
+                    right = mid - 1
             return -1
         
-        def bsRow(item):
-            l, r = 0, len(item) - 1
-            while l <= r:
-                mid = (l + r) // 2
-                if item[mid][0] <= target <= item[mid][-1]:
-                    return mid
-                if item[mid][0] < target:
-                    l = mid + 1
+        def bs(_list):
+            left, right = 0, len(_list) - 1
+            while left <= right:
+                mid = (left + right) // 2
+                if _list[mid] == target:
+                    return True
+                elif _list[mid] < target:
+                    left = mid + 1
                 else:
-                    r = mid - 1
-            return -1
-        index = bsRow(matrix)
-        if index != -1:
-            if bs(matrix[index]) >= 0:
-                return True
-        return False
+                    right = mid - 1
+            return False
+        
+        
+        index = bs_array()
+        if index == -1:
+            return False
+        return bs(m[index])
         
