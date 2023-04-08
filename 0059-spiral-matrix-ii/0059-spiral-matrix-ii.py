@@ -1,6 +1,8 @@
 class Solution:
     def generateMatrix(self, n):
         matrix = [[None]*n for _ in range(n)]
+        # r => row
+        # c => col
         rs,re,cs,ce = 0,n-1,0,n-1
         count = 1
         while rs <= re and cs <= ce:
