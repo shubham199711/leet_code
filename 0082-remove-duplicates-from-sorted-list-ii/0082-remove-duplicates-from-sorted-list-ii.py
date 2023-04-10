@@ -11,9 +11,6 @@ class Solution:
             newTemp = temp
             while newTemp and newTemp.next and newTemp.val == newTemp.next.val:
                 newTemp = newTemp.next
-            # print(f'{newTemp = }, {prev = } {temp = }')
-            # print(prev == None and newTemp.val != temp.val)
-            # print(newTemp.val != temp.val)
             if prev == None and newTemp != temp:
                 head = newTemp.next
                 temp = head
