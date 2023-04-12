@@ -5,7 +5,6 @@ class Solution:
             while r < n and _sum < target:
                 _sum += nums[r]
                 r += 1
-            # print(f'{l =}, {r = }, {ans = }, {_sum = }') 
             if _sum >= target:
                 ans = min(ans, r - l)
             _sum -= nums[l]
