@@ -3,7 +3,7 @@ class Solution:
         queue = []
         for r in range(len(board)):
             for c in range(len(board[0])):
-                if (r in [0, len(board)-1] or c in [0, len(board[0])-1]) and board[r][c] == 'O':
+                if (board[r][c] == 'O' and r in [0, len(board)-1] or c in [0, len(board[0])-1]) :
                     queue.append((r,c))
         while queue:
             r,c = queue.pop(0)
