@@ -1,7 +1,7 @@
 class Solution:
     def permutations(self,cur,idx,ans):
         if idx==len(cur):
-            ans.append([x for x in cur])
+            ans.append(cur[::])
         if idx>=len(cur):return 
         count=[0]*21
         for i in range(idx,len(cur)):
