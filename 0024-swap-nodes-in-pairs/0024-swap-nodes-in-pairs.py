@@ -7,8 +7,8 @@ class Solution:
     def swapPairs(self, head: ListNode) -> ListNode:
         if not head:
             return head
-        dummy = ListNode(0) # new head
-        dummy.next, head = head, dummy
+        dummy = ListNode(0, head) # new head
+        head = dummy
         while head.next and head.next.next:
             a, b = head.next, head.next.next
             head.next, a.next, b.next, head = b, b.next, a, a
