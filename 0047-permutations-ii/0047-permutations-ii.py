@@ -3,7 +3,6 @@ class Solution:
         if idx==len(cur):
             ans.append(cur[::])
         if idx>=len(cur):return 
-        count=[0]*21
         seen = set()
         for i in range(idx,len(cur)):
             if cur[i] not in seen:
