@@ -4,9 +4,10 @@ class Solution:
             ans.append(cur[::])
         if idx>=len(cur):return 
         count=[0]*21
+        seen = set()
         for i in range(idx,len(cur)):
-            if count[cur[i]-10]==0:
-                count[cur[i]-10]=1
+            if cur[i] not in seen:
+                seen.add(cur[i])
                 cur[i],cur[idx]=cur[idx],cur[i]
                 self.permutations(cur,idx+1,ans)
                 cur[i],cur[idx]=cur[idx],cur[i]
