@@ -1,3 +1,4 @@
+# use dfs in combinations problem's
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
         candidates.sort()
@@ -10,7 +11,7 @@ class Solution:
                 return
             for i in range(idx, len(candidates)):
                 val = candidates[i]
-                if i != idx and val == candidates[i-1]: continue  # if not the same first element and same as last element
+                if idx != i and val == candidates[i-1]: continue  # if not the same first element and same as last element
                 dfs(current_total-val, i+1, path+[val])
         dfs(target)
         return ans
