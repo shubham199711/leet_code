@@ -5,7 +5,6 @@ class Solution:
         def permutations(idx):
             if idx==len(nums):
                 ans.append(nums[::])
-            if idx>=len(nums): return 
             seen = set()
             for i in range(idx,len(nums)):
                 if nums[i] not in seen:
