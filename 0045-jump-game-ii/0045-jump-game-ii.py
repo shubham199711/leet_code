@@ -1,10 +1,17 @@
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        N = len(nums)
-        dp = [float('inf')] * N
-        dp[N - 1] = 0
-        for i in range(N - 2, -1, -1):
-            for j in range(1, nums[i] + 1):
-                if i + j < N:
-                    dp[i] = min(dp[i], dp[i + j] + 1)
-        return dp[0]
+        n = len(nums)
+        q = deque([(0,0)])
+        vis = set([0])
+        while q:
+            curInd,jumps = q.popleft()
+            if curInd >= n-1:
+                return jumps
+            curDist = nums[curInd]
+            for i in range(curDist,0,-1):
+                if curInd+i in vis:
+                    break
+                else:
+                    q.append((curInd+i,jumps+1))
+                    vis.add(curInd+i)
+        return -1
