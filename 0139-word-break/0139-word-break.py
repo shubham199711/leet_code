@@ -1,6 +1,6 @@
 from collections import deque
 class Solution:
-    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+    def wordBreak2(self, s: str, wordDict: List[str]) -> bool:
         q = [s]
         seen = set()
         while len(q):
@@ -15,4 +15,16 @@ class Solution:
                     seen.add(_s)
                     q.append(_s)
         return False
-        
+    def wordBreak(self, s: str, wordDict: List[str]) -> bool:
+        m = len(s)
+        dp = [False] * (m + 1)
+        dp[m] = True
+        for i in range(m - 1, -1, -1):
+            for w in wordDict:
+                s_word_len = i + len(w)
+                if s_word_len <= m and s[i: s_word_len] == w:
+                    dp[i] = dp[s_word_len]
+                if dp[i]:
+                    break
+        return dp[0]
+            
