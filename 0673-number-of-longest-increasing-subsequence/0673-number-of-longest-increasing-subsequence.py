@@ -1,21 +1,12 @@
 class Solution:
     def findNumberOfLIS(self, nums: List[int]) -> int:
-        mem={}
-        def dfs(i,p):
-            if (i,p) in mem: return mem[(i,p)]
-            if i==len(nums): return 0,1
-
-            elif p==None or nums[i]>p:
-                x,c1=dfs(i+1,nums[i])
-                x+=1
-                y,c2=dfs(i+1,p)
-
-                if x==y: mem[(i,p)]=(x,c1+c2); return mem[(i,p)]
-                elif x>y: mem[(i,p)]=(x,c1); return mem[(i,p)]
-                else: mem[(i,p)]=(y,c2); return mem[(i,p)]
-
-            else:
-                mem[(i,p)]=dfs(i+1,p)
-                return mem[(i,p)]
-
-        return dfs(0,None)[1] 
+        if not nums: return 0
+        n = len(nums)
+        m, dp, cnt = 0, [1] * n, [1] * n
+        for i in range(n):
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    if dp[i] < dp[j]+1: dp[i], cnt[i] = dp[j]+1, cnt[j]
+                    elif dp[i] == dp[j]+1: cnt[i] += cnt[j]
+            m = max(m, dp[i])                        
+        return sum(c for l, c in zip(dp, cnt) if l == m)
