@@ -27,4 +27,16 @@ class Solution:
                 if dp[i]:
                     break
         return dp[0]
-            
+    
+    def wordBreak3(self, s: str, wordDict: List[str]) -> bool:
+        def helper(s, path):
+            if s == "":
+                return True
+            for w in wordDict:
+                if not s.startswith(w):  continue
+                path.append(w)
+                if helper(s[len(w):], path):
+                    return True
+                path.pop()
+            return False
+        return helper(s, [])
