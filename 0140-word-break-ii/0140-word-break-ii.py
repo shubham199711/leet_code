@@ -1,14 +1,13 @@
 class Solution:
     def wordBreak(self, s: str, wordDict: List[str]) -> List[str]:
         ans = []
+        @lru_cache(None)
         def helper(s, path):
             if s == "":
-                ans.append(' '.join(path))
+                ans.append(path)
             for w in wordDict:
                 if not s.startswith(w):  continue
-                path.append(w)
-                helper(s[len(w):], path)
-                path.pop()
-        helper(s, [])
+                helper(s[len(w):], f'{path} {w}' if len(path) else w)
+        helper(s, "")
         return ans
         
