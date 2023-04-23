@@ -7,8 +7,7 @@ class Solution:
             item = nums[i]
             runMax = 0
             for j in range(0, i):
-                item2 = nums[j]
-                if item2 < item and runMax < ans[j]:
+                if nums[j] < item and runMax < ans[j]:
                     runMax = ans[j]
             ans[i] = runMax + 1
         return max(ans) 
