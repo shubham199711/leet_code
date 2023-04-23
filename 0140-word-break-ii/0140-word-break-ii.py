@@ -5,11 +5,9 @@ class Solution:
             if s == "":
                 ans.append(' '.join(path))
             for w in wordDict:
-                if not s.startswith(w): 
-                    continue
-                _s = s[len(w):]
+                if not s.startswith(w):  continue
                 path.append(w)
-                helper(_s, path)
+                helper(s[len(w):], path)
                 path.pop()
         helper(s, [])
         return ans
