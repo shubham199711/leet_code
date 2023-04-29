@@ -1,9 +1,9 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        runnigMin = prices[0]
-        runningMaxDiff = 0
-        for item in prices:
-            runnigMin = min(runnigMin, item)
-            runningMaxDiff = max(runningMaxDiff, item - runnigMin)
-        return runningMaxDiff
-        
+        n = len(prices)
+        dp = [0] * (n + 1)
+        _min = prices[0]
+        for i in range(1, n + 1):
+            _min = min(_min, prices[i - 1])
+            dp[i] = max(prices[i - 1] - _min, dp[i - 1])
+        return dp[-1]
