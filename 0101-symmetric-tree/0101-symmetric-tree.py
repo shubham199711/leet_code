@@ -7,7 +7,7 @@
 class Solution:
     def isSame(self, left: Optional[TreeNode], right: Optional[TreeNode]) -> bool:
         if not left or not right:
-            return left is None and right is None
+            return left == right
         if left.val != right.val:
             return False
         return self.isSame(left.left, right.right) and self.isSame(left.right, right.left)
