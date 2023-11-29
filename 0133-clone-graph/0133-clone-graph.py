@@ -2,12 +2,11 @@ class Solution:
     def cloneGraph(self, node):
         if not node:
             return node
-        memo, visited = {}, set()
+        memo= {}
         def dfs(node):
-            if node in visited:
+            if memo.get(node) is not None:
                 return memo[node]
             memo[node] = Node(node.val)
-            visited.add(node)
             for n in node.neighbors:
                 memo[node].neighbors.append(dfs(n))
             return memo[node]
