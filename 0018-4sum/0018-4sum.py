@@ -12,17 +12,17 @@ class Solution:
                     demp.append(nums[i])
                     k_sum(k - 1, i + 1, current_target - nums[i])
                     demp.pop()
-                return 
-            l, r = start, len(nums) - 1
-            while l < r:
-                if nums[l] + nums[r] < current_target:
-                    l += 1
-                elif nums[l] + nums[r] > current_target:
-                    r -= 1
-                else:
-                    ans.append(demp + [nums[l], nums[r]])
-                    l += 1
-                    while l < r and nums[l] == nums[l - 1]:
+            else:
+                l, r = start, len(nums) - 1
+                while l < r:
+                    if nums[l] + nums[r] < current_target:
                         l += 1
+                    elif nums[l] + nums[r] > current_target:
+                        r -= 1
+                    else:
+                        ans.append(demp + [nums[l], nums[r]])
+                        l += 1
+                        while l < r and nums[l] == nums[l - 1]:
+                            l += 1
         k_sum(4, 0, target)
         return ans
