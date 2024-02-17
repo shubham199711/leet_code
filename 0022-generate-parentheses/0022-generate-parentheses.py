@@ -2,17 +2,16 @@ class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
         if n == 0:
             return []
+        # parentheses string, open count, close_count
         stack = [('(', 1, 0)]
         ans = []
-        open_and_close_pan_count = 2 * n
         while stack:
-            cur_ans, n_left, n_right = stack.pop()
-            if len(cur_ans) == open_and_close_pan_count:
-                ans.append(cur_ans)
+            curr_ans, open_count, close_count = stack.pop()
+            if len(curr_ans) == 2 * n:
+                ans.append(curr_ans)
                 continue
-            if n_left < n: # if less then n number of par
-                stack.append((cur_ans + '(', n_left + 1, n_right))
-            if n_right < n_left: # if less then open par
-                stack.append((cur_ans + ')', n_left, n_right + 1))
+            if open_count < n:
+                stack.append((curr_ans + '(', open_count + 1, close_count))
+            if close_count < open_count:
+                stack.append((curr_ans + ')', open_count, close_count + 1))
         return ans
-        
