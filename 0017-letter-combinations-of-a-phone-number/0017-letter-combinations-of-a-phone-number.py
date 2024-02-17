@@ -39,10 +39,65 @@ class Solution(object):
         backtrack(0, "")
         return ans
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     def letterCombinations(self, digits):
-        if not digits: 
+        if not len(digits):
             return []
-        char_map = { 
+        mapping = {
+            '0': '',
+            '1': '',
             '2': 'abc',
             '3': 'def',
             '4': 'ghi',
@@ -52,12 +107,13 @@ class Solution(object):
             '8': 'tuv',
             '9': 'wxyz'
         }
-        queue  = [""]
-        for item in digits:
-            item = char_map[item]
-            ansAns = []
-            for innerItem in queue:
-                for j in item:
-                    ansAns.append(innerItem + j)
-            queue = ansAns
-        return queue
+        ans = [""]
+        for d in digits:
+            possible_char = mapping.get(d, "")
+            temp = []
+            for x in ans:
+                for char in possible_char:
+                    temp.append(x + char)
+            ans = temp
+        return ans
+        
