@@ -1,5 +1,4 @@
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        if len(s) != len(t): return False
-        return sorted(s) == sorted(t)
+        return len(t) == len(s) and sorted(s) == sorted(t)
         
